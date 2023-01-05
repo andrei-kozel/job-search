@@ -9,6 +9,9 @@ module.exports = {
     "@vue/eslint-config-prettier",
     "plugin:vitest-globals/recommended",
   ],
+  rules: {
+    "prettier/prettier": ["error", { endOfLine: "auto" }],
+  },
   parserOptions: {
     ecmaVersion: "latest",
   },
