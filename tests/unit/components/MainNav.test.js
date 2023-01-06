@@ -4,13 +4,25 @@ import userEvent from "@testing-library/user-event";
 
 describe("MainNav", () => {
   it("displays company name", () => {
-    render(MainNav);
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true,
+        },
+      },
+    });
     const companyName = screen.getByText("Jobs & Careers");
     expect(companyName).toBeInTheDocument();
   });
 
   it("displays menu items", () => {
-    render(MainNav);
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true,
+        },
+      },
+    });
     const navigationMenuItems = screen.getAllByRole("listitem");
     const navigationMenuTexts = navigationMenuItems.map(
       (item) => item.textContent
@@ -27,7 +39,13 @@ describe("MainNav", () => {
 
   describe("when the user logs in", () => {
     it("displays user profile picture", async () => {
-      render(MainNav);
+      render(MainNav, {
+        global: {
+          stubs: {
+            FontAwesomeIcon: true,
+          },
+        },
+      });
 
       /* Checking if the user profile image is not in the document. */
       let profileImage = screen.queryByRole("img", {
