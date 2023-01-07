@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/vue";
-import SubNav from "@/components/SubNav.vue";
+import SubNav from "@/components/Navigation/SubNav.vue";
 
 describe("SubNav", () => {
   /* This is a test that checks if the job count is displayed when the user is on the jobs page. */
