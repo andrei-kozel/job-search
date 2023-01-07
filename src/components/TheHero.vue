@@ -5,6 +5,7 @@
         <div class="col-span-1 col-start-1 border border-blue-700">1 col</div>
         <div class="col-span-5 col-start-2 border border-green-700">
           <TheHeadline />
+          <JobSearchForm />
         </div>
         <div class="col-span-5 col-start-7 border border-red-700">5 cols</div>
         <div class="col-span-1 col-start-12 border border-black">1 col</div>
@@ -15,9 +16,10 @@
 
 <script>
 import TheHeadline from "@/components/TheHeadline.vue";
+import JobSearchForm from "@/components/JobSearchForm.vue";
 
 export default {
   name: "TheHero",
-  components: { TheHeadline },
+  components: { TheHeadline, JobSearchForm },
 };
 </script>
