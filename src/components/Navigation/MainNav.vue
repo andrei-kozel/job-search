@@ -4,9 +4,11 @@
       <div
         class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8"
       >
-        <a class="flex h-full items-center text-xl font-bold" href="/">{{
-          company
-        }}</a>
+        <router-link
+          class="flex h-full items-center text-xl font-bold"
+          to="/"
+          >{{ company }}</router-link
+        >
         <nav class="ml-12 h-full">
           <ul class="flex h-full list-none">
             <li
@@ -14,9 +16,11 @@
               :key="item.title"
               class="ml-9 h-full first:ml-0 hover:text-gray-400"
             >
-              <a :href="item.url" class="flex h-full items-center py-2.5">{{
-                item.title
-              }}</a>
+              <router-link
+                :to="item.url"
+                class="flex h-full items-center py-2.5"
+                >{{ item.title }}</router-link
+              >
             </li>
           </ul>
         </nav>
@@ -52,7 +56,7 @@ export default {
         { title: "Life at J&C", url: "/" },
         { title: "How we hire", url: "/" },
         { title: "Students", url: "/" },
-        { title: "Jobs", url: "/" },
+        { title: "Jobs", url: "/jobs/results" },
       ],
       isLoggedIn: false,
     };
