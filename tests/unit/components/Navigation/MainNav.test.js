@@ -4,8 +4,14 @@ import userEvent from "@testing-library/user-event";
 
 describe("MainNav", () => {
   const renderMainNav = () => {
+    const $route = {
+      name: "Home",
+    };
     render(MainNav, {
       global: {
+        mocks: {
+          $route,
+        },
         stubs: {
           FontAwesomeIcon: true,
         },
