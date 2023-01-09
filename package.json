@@ -30,6 +30,7 @@
     "eslint-plugin-vitest-globals": "^1.2.0",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.3",
+    "json-server": "^0.17.1",
     "postcss": "^8.4.20",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.2.1",
