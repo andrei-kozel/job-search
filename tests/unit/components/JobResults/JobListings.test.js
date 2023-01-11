@@ -31,7 +31,7 @@ describe("JobListings", () => {
     axios.get.mockResolvedValue({ data: [] });
     const $route = createRoute();
     renderJobListngs($route);
-    expect(axios.get).toHaveBeenCalledWith("http://localhost:3000/jobs");
+    expect(axios.get).toHaveBeenCalledWith("http://fakeapi.com/jobs");
   });
 
   it("displays max of 10 jobs", async () => {
