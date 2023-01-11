@@ -77,4 +77,24 @@ describe("JobListings", () => {
       expect(nextLink).toBeInTheDocument();
     });
   });
+
+  describe("when user on last page", () => {
+    it("does not show link to the next page", async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) });
+      const $route = createRoute({ page: "2" });
+      renderJobListngs($route);
+      await screen.findAllByRole("listitem");
+      const nextLink = screen.queryByRole("link", { name: /next/i });
+      expect(nextLink).not.toBeInTheDocument();
+    });
+
+    it("shows link to the previous page", async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) });
+      const $route = createRoute({ page: "2" });
+      renderJobListngs($route);
+      await screen.findAllByRole("listitem");
+      const prevLink = screen.queryByRole("link", { name: /previous/i });
+      expect(prevLink).toBeInTheDocument();
+    });
+  });
 });
