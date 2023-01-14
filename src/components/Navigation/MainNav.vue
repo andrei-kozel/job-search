@@ -54,7 +54,7 @@ export default {
     return {
       company: "Jobs & Careers",
       menuItems: [
-        { title: "Teams", url: "/" },
+        { title: "Teams", url: "/teams" },
         { title: "Location", url: "/" },
         { title: "Life at J&C", url: "/" },
         { title: "How we hire", url: "/" },
