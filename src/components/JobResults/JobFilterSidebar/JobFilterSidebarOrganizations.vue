@@ -11,7 +11,7 @@
             class="mr-3"
             @change="selectOrganizations"
           />
-          <label>{{ org }}</label>
+          <label :for="org">{{ org }}</label>
         </li>
       </ul>
     </fieldset>
