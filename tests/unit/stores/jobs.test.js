@@ -61,9 +61,7 @@ describe("getters", () => {
       ];
 
       const result = store.UNIQUE_JOB_TYPES;
-      expect(result).toEqual(
-        new Set([{ jobType: "Full-time" }, { jobType: "Part-time" }])
-      );
+      expect(result).toEqual(new Set(["Full-time", "Part-time"]));
     });
   });
 
