@@ -4,9 +4,7 @@
       <div v-if="onJobResultsPage">
         <FontAwesomeIcon :icon="['fas', 'search']" class="mr-3" />
         <span
-          ><span class="text-brand-green-1">{{
-            FILTERED_JOBS_BY_ORGANIZATIONS.length
-          }}</span>
+          ><span class="text-brand-green-1">{{ FILTERED_JOBS.length }}</span>
           jobs matched</span
         >
       </div>
@@ -14,17 +12,14 @@
   </div>
 </template>
 
-<script>
-import { mapState } from "pinia";
-import { useJobsStore, FILTERED_JOBS_BY_ORGANIZATIONS } from "@/stores/jobs";
+<script setup>
+import { useJobsStore } from "@/stores/jobs";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
-export default {
-  name: "SubNav",
-  computed: {
-    ...mapState(useJobsStore, [FILTERED_JOBS_BY_ORGANIZATIONS]),
-    onJobResultsPage() {
-      return this.$route.name === "JobResults";
-    },
-  },
-};
+const route = useRoute();
+const onJobResultsPage = computed(() => route.name === "JobResults");
+
+const jobStore = useJobsStore();
+const FILTERED_JOBS = computed(() => jobStore.FILTERED_JOBS);
 </script>
