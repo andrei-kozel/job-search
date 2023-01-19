@@ -1,10 +1,14 @@
 import { render, screen } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 import { createTestingPinia } from "@pinia/testing";
+import { useRouter } from "vue-router";
 
 import JobFilterdSidebarOrganizations from "@/components/JobResults/JobFilterSidebar/JobFilterSidebarOrganizations.vue";
 import { useJobsStore } from "@/stores/jobs";
 import { useUserStore } from "@/stores/user";
+import { vi } from "vitest";
+
+vi.mock("vue-router");
 
 describe("JobFilterdSidebarOrganizations", () => {
   const rendersJobFilterdSidebarOrganizations = () => {
@@ -36,6 +40,8 @@ describe("JobFilterdSidebarOrganizations", () => {
   });
 
   it("communicates that user has selected checkbox for organizations", async () => {
+    useRouter.mockReturnValue({ push: vi.fn() });
+
     const { jobsStore, userStore } = rendersJobFilterdSidebarOrganizations();
     jobsStore.UNIQUE_ORGANIZATIONS = new Set(["Google", "Amazon"]);
 
