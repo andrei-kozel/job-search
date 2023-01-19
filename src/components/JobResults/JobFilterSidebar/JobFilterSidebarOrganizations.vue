@@ -18,30 +18,22 @@
   </collapsible-accordion>
 </template>
 
-<script>
-import { mapState, mapActions } from "pinia";
-import { useJobsStore, UNIQUE_ORGANIZATIONS } from "@/stores/jobs";
-import { useUserStore, ADD_SELECTED_ORGANIZATIONS } from "@/stores/user";
+<script setup>
+import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
+import { useJobsStore } from "@/stores/jobs";
+import { useUserStore } from "@/stores/user";
 import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
 
-export default {
-  name: "JoBFilterSdebarOrganization",
-  components: {
-    CollapsibleAccordion,
-  },
-  data() {
-    return {
-      selectedOrganizations: [],
-    };
-  },
-  computed: {
-    ...mapState(useJobsStore, [UNIQUE_ORGANIZATIONS]),
-  },
-  methods: {
-    ...mapActions(useUserStore, [ADD_SELECTED_ORGANIZATIONS]),
-    selectOrganizations() {
-      this.ADD_SELECTED_ORGANIZATIONS(this.selectedOrganizations);
-    },
-  },
+const selectedOrganizations = ref([]);
+
+const jobsStore = useJobsStore();
+const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS);
+
+const userStore = useUserStore();
+const router = useRouter();
+const selectOrganizations = () => {
+  userStore.ADD_SELECTED_ORGANIZATIONS(selectedOrganizations.value);
+  router.push({ name: "JobResults" });
 };
 </script>
