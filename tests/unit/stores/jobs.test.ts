@@ -1,11 +1,14 @@
+import type { Mock } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
 import axios from "axios";
 
 import { useJobsStore } from "@/stores/jobs";
 import { useUserStore } from "@/stores/user";
 import { describe } from "vitest";
+import type { Job } from "@/api/types";
 
 vi.mock("axios");
+const axiosGetMock = axios.get as Mock;
 
 describe("state", () => {
   beforeEach(() => {
@@ -25,7 +28,7 @@ describe("actions", () => {
 
   describe("FETCH_JOBS", () => {
     it("makes API request and stores received jobs", async () => {
-      axios.get.mockResolvedValue({ data: ["Job 1", "Job 2"] });
+      axiosGetMock.mockResolvedValue({ data: ["Job 1", "Job 2"] });
       const store = useJobsStore();
       await store.FETCH_JOBS();
       expect(store.jobs).toEqual(["Job 1", "Job 2"]);
@@ -45,7 +48,7 @@ describe("getters", () => {
         { organization: "Google" },
         { organization: "Google" },
         { organization: "Amazon" },
-      ];
+      ] as Job[];
       const result = store.UNIQUE_ORGANIZATIONS;
       expect(result).toEqual(new Set(["Google", "Amazon"]));
     });
@@ -58,7 +61,7 @@ describe("getters", () => {
         { jobType: "Full-time" },
         { jobType: "Part-time" },
         { jobType: "Full-time" },
-      ];
+      ] as Job[];
 
       const result = store.UNIQUE_JOB_TYPES;
       expect(result).toEqual(new Set(["Full-time", "Part-time"]));
@@ -72,7 +75,7 @@ describe("getters", () => {
         { organization: "Google" },
         { organization: "Amazon" },
         { organization: "Microsoft" },
-      ];
+      ] as Job[];
       const userStore = useUserStore();
       userStore.selectedOrganizations = ["Google", "Microsoft"];
 
@@ -90,7 +93,7 @@ describe("getters", () => {
           { organization: "Google" },
           { organization: "Amazon" },
           { organization: "Microsoft" },
-        ];
+        ] as Job[];
         const userStore = useUserStore();
         userStore.selectedOrganizations = [];
 
@@ -111,7 +114,7 @@ describe("getters", () => {
         { jobType: "Full-time" },
         { jobType: "Part-time" },
         { jobType: "Temporary" },
-      ];
+      ] as Job[];
 
       const userStore = useUserStore();
       userStore.selectedJobTypes = ["Full-time", "Part-time"];
@@ -130,7 +133,7 @@ describe("getters", () => {
           { jobType: "Full-time" },
           { jobType: "Part-time" },
           { jobType: "Temporary" },
-        ];
+        ] as Job[];
 
         const userStore = useUserStore();
         userStore.selectedJobTypes = [];
