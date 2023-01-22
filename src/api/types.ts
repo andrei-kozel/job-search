@@ -13,5 +13,5 @@ export interface Job {
 
 export interface Degree {
   id: 1;
-  degree: number;
+  degree: string;
 }
