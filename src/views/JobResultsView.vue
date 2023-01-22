@@ -5,15 +5,7 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import JobFilterSidebar from "@/components/JobResults/JobFilterSidebar/JobFilterSidebar.vue";
 import JobListings from "@/components/JobResults/JobListings.vue";
-
-export default {
-  name: "JobResultsView",
-  components: {
-    JobFilterSidebar,
-    JobListings,
-  },
-};
 </script>
