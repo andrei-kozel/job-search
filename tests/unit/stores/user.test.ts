@@ -1,6 +1,6 @@
 import { createPinia, setActivePinia } from "pinia";
 
-import { useUserStore } from "@/stores/user";
+import { CLEAR_FILTER, useUserStore } from "@/stores/user";
 
 describe("state", () => {
   beforeEach(() => {
@@ -62,6 +62,23 @@ describe("actions", () => {
       const store = useUserStore();
       store.ADD_SELECTED_DEGREES(["Deg 1", "Deg 2"]);
       expect(store.selectedDegrees).toEqual(["Deg 1", "Deg 2"]);
+    });
+  });
+
+  describe("CLEAR_FILTER", () => {
+    it("removes all job filters that user has chosen", () => {
+      const store = useUserStore();
+      store.ADD_SELECTED_DEGREES(["Deg 1", "Deg 2"]);
+      store.ADD_SELECTED_JOB_TYPES(["Type 1", "Type 2"]);
+      store.ADD_SELECTED_ORGANIZATIONS(["Org1", "Org2"]);
+      expect(store.selectedDegrees).toEqual(["Deg 1", "Deg 2"]);
+      expect(store.selectedJobTypes).toEqual(["Type 1", "Type 2"]);
+      expect(store.selectedOrganizations).toEqual(["Org1", "Org2"]);
+
+      store.CLEAR_FILTER();
+      expect(store.selectedDegrees).toEqual([]);
+      expect(store.selectedJobTypes).toEqual([]);
+      expect(store.selectedOrganizations).toEqual([]);
     });
   });
 });
