@@ -30,7 +30,7 @@
             v-else
             text="Sign in"
             type="primary"
-            @click="loginUser"
+            @click="LOGIN_USER"
           />
         </div>
       </div>
@@ -59,7 +59,7 @@ const menuItems = ref([
 
 const userStore = useUserStore();
 const isLoggedIn = computed(() => userStore.isLoggedIn);
-const loginUser = userStore.LOGIN_USER;
+const LOGIN_USER = userStore.LOGIN_USER;
 
 const headerHeightClass = computed(() => ({
   "h-16": !isLoggedIn.value,
