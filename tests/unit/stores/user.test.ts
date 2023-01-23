@@ -36,7 +36,7 @@ describe("actions", () => {
   describe("loginUser", () => {
     it("logs the user in", () => {
       const store = useUserStore();
-      store.loginUser();
+      store.LOGIN_USER();
       expect(store.isLoggedIn).toBe(true);
     });
   });

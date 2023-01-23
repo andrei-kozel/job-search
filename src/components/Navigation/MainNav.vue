@@ -59,7 +59,7 @@ const menuItems = ref([
 
 const userStore = useUserStore();
 const isLoggedIn = computed(() => userStore.isLoggedIn);
-const loginUser = userStore.loginUser;
+const loginUser = userStore.LOGIN_USER;
 
 const headerHeightClass = computed(() => ({
   "h-16": !isLoggedIn.value,
