@@ -1,6 +1,6 @@
 import { createPinia, setActivePinia } from "pinia";
 
-import { CLEAR_FILTER, useUserStore } from "@/stores/user";
+import { useUserStore } from "@/stores/user";
 
 describe("state", () => {
   beforeEach(() => {
