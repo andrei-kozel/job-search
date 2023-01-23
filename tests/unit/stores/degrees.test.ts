@@ -50,7 +50,7 @@ describe("getters", () => {
         createDegree({ degree: "Bachelor's" }),
       ];
 
-      const result = store.UNIQUE_DEGREES();
+      const result = store.UNIQUE_DEGREES;
 
       expect(result).toEqual(["Master's", "Bachelor's"]);
     });
