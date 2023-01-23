@@ -10,6 +10,11 @@
         </div>
       </div>
       <job-filters-sidebar-checkbox-group
+        header="Degrees"
+        :unique-values="UNIQUE_DEGREES"
+        :action="userStore.ADD_SELECTED_DEGREES"
+      />
+      <job-filters-sidebar-checkbox-group
         header="Job Types"
         :unique-values="UNIQUE_ORGANIZATIONS"
         :action="userStore.ADD_SELECTED_ORGANIZATIONS"
@@ -31,10 +36,13 @@ import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobFilterSid
 
 import { useJobsStore } from "@/stores/jobs";
 import { useUserStore } from "@/stores/user";
+import { useDegreesStore } from "@/stores/degrees";
 
 const jobStore = useJobsStore();
 const userStore = useUserStore();
+const degreesStore = useDegreesStore();
 
 const UNIQUE_ORGANIZATIONS = computed(() => jobStore.UNIQUE_ORGANIZATIONS);
 const UNIQUE_JOB_TYPES = computed(() => jobStore.UNIQUE_JOB_TYPES);
+const UNIQUE_DEGREES = computed(() => degreesStore.UNIQUE_DEGREES);
 </script>
