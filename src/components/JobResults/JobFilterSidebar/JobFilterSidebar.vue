@@ -6,7 +6,11 @@
       <div class="flex flex-row justify-between">
         <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>
         <div class="flex items-center text-sm">
-          <action-button text="Clear filter" type="secondary" />
+          <action-button
+            text="Clear filter"
+            type="secondary"
+            @click="CLEAR_FILTER"
+          />
         </div>
       </div>
       <job-filters-sidebar-checkbox-group
@@ -45,4 +49,5 @@ const degreesStore = useDegreesStore();
 const UNIQUE_ORGANIZATIONS = computed(() => jobStore.UNIQUE_ORGANIZATIONS);
 const UNIQUE_JOB_TYPES = computed(() => jobStore.UNIQUE_JOB_TYPES);
 const UNIQUE_DEGREES = computed(() => degreesStore.UNIQUE_DEGREES);
+const CLEAR_FILTER = userStore.CLEAR_FILTER;
 </script>
