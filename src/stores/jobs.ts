@@ -76,6 +76,10 @@ export const useJobsStore = defineStore("jobs", {
         .filter((job) => {
           if (userStore.selectedJobTypes.length === 0) return true;
           return userStore.selectedJobTypes.includes(job.jobType);
+        })
+        .filter((job) => {
+          if (userStore.selectedDegrees.length === 0) return true;
+          return userStore.selectedDegrees.includes(job.degree);
         });
     },
   },
