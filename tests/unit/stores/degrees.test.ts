@@ -26,7 +26,7 @@ describe("actions", () => {
 
   describe("FETCH_DEGREES", () => {
     it("mekes API request and stores fetched degrees", async () => {
-      axiosGetMock.mockRejectedValue({
+      axiosGetMock.mockResolvedValue({
         data: [{ id: 1, degree: "Bachelor's" }],
       });
 
