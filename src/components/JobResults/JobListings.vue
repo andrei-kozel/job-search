@@ -34,9 +34,13 @@ import { useRoute } from "vue-router";
 import { useJobsStore } from "@/stores/jobs";
 
 import JobListing from "@/components/JobResults/JobListing.vue";
+import { useDegreesStore } from "@/stores/degrees";
 
 const jobsStore = useJobsStore();
 onMounted(jobsStore.FETCH_JOBS);
+
+const degreesStore = useDegreesStore();
+onMounted(degreesStore.FETCH_DEGREES);
 
 const route = useRoute();
 
